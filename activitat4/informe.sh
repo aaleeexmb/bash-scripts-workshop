@@ -33,9 +33,9 @@ fi >> $fitxer
 cpu=`top -bn1 | grep 'Cpu(s)' | awk '{print $2 + $4}'`
 
 if [[ $num -eq 2 ]]; then
-        echo "--- Ús de CPU i Memòria ---"
-        echo "CPU Actual: $cpu"
-        echo ""
+	echo "--- Ús de CPU i Memòria ---"
+    echo "CPU Actual: $cpu"
+    echo ""
 fi >> $fitxer
 
 if [[ $num -eq 3 ]]; then
@@ -59,39 +59,39 @@ if [[ $num -eq 4 ]]; then
 fi >> $fitxer
 
 if [[ $num -eq 5 ]]; then
-        echo "--- Serveis Prinicipals Actius ---"
+    echo "--- Serveis Prinicipals Actius ---"
 	systemctl list-units --type=service --state=running | head -n 15
 	echo ""
 fi >> $fitxer
 
 if [[ $num -eq 6 ]]; then
 	echo "--- Inforamció General ---"
-        echo "Nom de l'equip: $(hostname)"
-        echo "Usuari actual: $(whoami)"
-        echo "Temps actiu: $(uptime -p)"
-        echo ""
+    echo "Nom de l'equip: $(hostname)"
+    echo "Usuari actual: $(whoami)"
+    echo "Temps actiu: $(uptime -p)"
+    echo ""
 
 	echo "--- Ús de CPU i Memòria ---"
-        echo "CPU Actual: $cpu"
-        echo ""
+    echo "CPU Actual: $cpu"
+    echo ""
 
-        echo "--- Espai en el disc ---"
-        df -h | grep -E '^/dev/'
-        echo ""
+    echo "--- Espai en el disc ---"
+    df -h | grep -E '^/dev/'
+    echo ""
 
-        echo "--- Xarxa ---"
-        echo "Adreça IP: $ip"
-        ping -c 1 8.8.8.8 &> /dev/null
-        if [[ $? -eq 0 ]]; then
-                echo "Hi ha Connexió a Internet"
-        else
-                echo "NO hi ha Connexió a Internet: ERROR!"
-        fi
-        echo ""
+    echo "--- Xarxa ---"
+    echo "Adreça IP: $ip"
+    ping -c 1 8.8.8.8 &> /dev/null
+    if [[ $? -eq 0 ]]; then
+    	echo "Hi ha Connexió a Internet"
+    else
+    	echo "NO hi ha Connexió a Internet: ERROR!"
+	fi
+    echo ""
 
-        echo "--- Serveis Prinicipals Actius ---"
-        systemctl list-units --type=service --state=running | head -n 15
-        echo ""
+    echo "--- Serveis Prinicipals Actius ---"
+    systemctl list-units --type=service --state=running | head -n 15
+    echo ""
 fi >> $fitxer
 
 echo "El informe ha sigut generat, el fitxer és diu $fitxer"
