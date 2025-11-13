@@ -27,7 +27,7 @@ if [[ -e $fitxer ]]; then
 	fi
 else
 	echo "Comprimint el fitxer a .tar"
-        fitxertar=`tar -czf $puntotar $directoritar$fitxer`
+    fitxertar=`tar -czf $puntotar $directoritar$fitxer`
 fi
 
 tipus=$(file "$puntotar")
